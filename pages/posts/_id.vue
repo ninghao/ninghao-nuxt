@@ -15,9 +15,13 @@ export default {
     return /^\d+$/.test(params.id)
   },
 
-  async asyncData({ $axios, params }) {
-    const post = await $axios.$get(`http://localhost:3333/posts/${params.id}`)
-    return { post }
+  async asyncData({ $axios, params, error }) {
+    try {
+      const post = await $axios.$get(`http://localhost:3333/posts/${params.id}`)
+      return { post }
+    } catch (e) {
+      error({ statusCode: 404, message: 'Post not found.' })
+    }
   }
 }
 </script>
