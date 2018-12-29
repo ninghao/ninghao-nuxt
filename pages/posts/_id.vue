@@ -1,8 +1,13 @@
 <template>
-  <div class="container">
-    <h1 class="display-1">
+  <div class="my-5">
+    <h1 class="display-1 my-5">
       {{ post.title }}
     </h1>
+    <img
+      :src="post.imageUrl"
+      :alt="post.title"
+      class="rounded w-100 mb-3"
+    >
     <div>
       {{ post.description }}
     </div>
