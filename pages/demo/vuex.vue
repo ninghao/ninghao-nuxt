@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <h1 class="display-1 my-5">{{ pageName }}</h1>
-    <span class="badge badge-pill badge-primary">Count {{ count }}</span>
+    <span
+      class="badge badge-pill badge-primary"
+      @click="add">Count {{ count }}</span>
   </div>
 </template>
 
@@ -13,6 +15,11 @@ export default {
     },
     count() {
       return this.$store.state.demo.count
+    }
+  },
+  methods: {
+    add() {
+      this.$store.commit('demo/add', 2)
     }
   }
 }
