@@ -27,11 +27,19 @@
 
 <script>
 export default {
-  async asyncData({ $axios }) {
-    const posts = await $axios.$get('http://localhost:3333/posts')
-    return { posts }
+  // async asyncData({ $axios }) {
+  //   const posts = await $axios.$get('http://localhost:3333/posts')
+  //   return { posts }
+  // },
+  async fetch({ $axios, store }) {
+    const response = await $axios.get('http://localhost:3333/posts')
+    store.commit('posts/setList', response.data)
   },
-
+  computed: {
+    posts() {
+      return this.$store.state.posts.list
+    }
+  },
   head() {
     return {
       title: 'Posts'
