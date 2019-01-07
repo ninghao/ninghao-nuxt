@@ -13,6 +13,6 @@ export const actions = {
   addAction(context, number) {
     setTimeout(() => {
       context.commit('add', number)
-    }, 1000);
+    }, 1000)
   }
 }
