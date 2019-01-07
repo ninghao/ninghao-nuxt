@@ -3,7 +3,7 @@
     <h1 class="display-1 my-5">{{ pageName }}</h1>
     <span
       class="badge badge-pill badge-primary"
-      @click="add">Count {{ count }}</span>
+      @click="addAction">Count {{ count }}</span>
   </div>
 </template>
 
@@ -20,6 +20,9 @@ export default {
   methods: {
     add() {
       this.$store.commit('demo/add', 2)
+    },
+    addAction() {
+      this.$store.dispatch('demo/addAction', 3)
     }
   }
 }

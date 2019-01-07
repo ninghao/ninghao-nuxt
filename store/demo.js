@@ -8,3 +8,11 @@ export const mutations = {
     state.count = state.count + number
   }
 }
+
+export const actions = {
+  addAction(context, number) {
+    setTimeout(() => {
+      context.commit('add', number)
+    }, 1000);
+  }
+}
