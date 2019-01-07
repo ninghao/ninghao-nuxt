@@ -1,3 +1,4 @@
 export const state = () => ({
-  pageName: 'Vuex'
+  pageName: 'Vuex',
+  count: 0
 })
