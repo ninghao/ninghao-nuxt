@@ -7,8 +7,8 @@
         :key="post.id"
         class="col-md-6"
       >
-        <nuxt-link :to="{ name: 'posts-id', params: { id: post.id } }">
-          <div class="card my-3">
+        <div class="card my-3">
+          <nuxt-link :to="{ name: 'posts-id', params: { id: post.id } }">
             <img
               :src="post.imageUrl"
               :alt="post.title"
@@ -18,8 +18,13 @@
               <h5 class="card-title">{{ post.title }}</h5>
               <h6 class="card-subtitle mb-2 text-black-50">{{ post.author }}</h6>
             </div>
+          </nuxt-link>
+          <div class="card-footer">
+            <button 
+              class="btn btn-link"
+              @click="destroyAction(post.id)">Delete</button>
           </div>
-        </nuxt-link>
+        </div>
       </div>
     </div>
   </div>
@@ -38,6 +43,11 @@ export default {
   computed: {
     posts() {
       return this.$store.state.posts.list
+    }
+  },
+  methods: {
+    destroyAction(id) {
+      this.$store.dispatch('posts/destroyAction', id)
     }
   },
   head() {
